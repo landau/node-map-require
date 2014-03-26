@@ -17,7 +17,7 @@ var is = require('is-predicate');
 var assert = require('assert');
 
 var mapRequire = require('./');
-var FIXTURES = path.join(__dirname, 'fixtures'); // fixtures is a dir of node modules
+var FIXTURES = path.join(__dirname, 'fixtures');
 
 var arr = mapRequire(FIXTURES, property('name'));
 assert(is.array(arr));
