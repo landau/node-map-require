@@ -14,11 +14,10 @@ var path = require('path');
  * @return {Array}
  */
 module.exports = function mapRequire(dir, fn, ctx) {
-  var filterRgx = /\.js$/;
+  var rgx = /\.js$/;
+
   return fs.readdirSync(dir)
-    .filter(function(f) {
-      return filterRgx.test(f);
-    })
+    .filter(rgx.test, rgx)
     .map(function(f) {
       return fn(require(path.join(dir, f)));
     }, ctx);
