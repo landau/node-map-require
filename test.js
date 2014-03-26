@@ -1,0 +1,32 @@
+'use strict';
+
+var path = require('path');
+var FIXTURES = path.join(__dirname, 'fixtures');
+
+var is = require('is-predicate');
+var assert = require('assert');
+var mapRequire = require('./');
+
+function property(key) {
+  return function(o) {
+    return o[key];
+  };
+}
+
+describe('#mapRequire', function() {
+  before(function() {
+    this.arr = mapRequire(FIXTURES, property('name'));
+  });
+
+  it('should return an array of exports', function() {
+    var arr = this.arr;
+    assert(is.array(arr));
+    assert.equal(arr.length, 2); // filtered out non-js
+  });
+
+  it('should transform each export', function() {
+    var arr = this.arr;
+    assert(arr.indexOf('Charmander') > -1);
+    assert(arr.indexOf('Pikachu') > -1);
+  });
+});
