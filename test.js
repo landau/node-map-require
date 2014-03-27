@@ -29,4 +29,15 @@ describe('#mapRequire', function() {
     assert(arr.indexOf('Charmander') > -1);
     assert(arr.indexOf('Pikachu') > -1);
   });
+
+  it('should apply context', function() {
+    var o = {
+      a: 'a',
+      fn: function() {
+        return this.a;
+      }
+    };
+    var arr = mapRequire(FIXTURES, o.fn, o);
+    assert(arr.indexOf('a') > -1);
+  });
 });

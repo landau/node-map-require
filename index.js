@@ -19,6 +19,6 @@ module.exports = function mapRequire(dir, fn, ctx) {
   return fs.readdirSync(dir)
     .filter(rgx.test, rgx)
     .map(function(f) {
-      return fn(require(path.join(dir, f)));
+      return fn.call(this, (require(path.join(dir, f))));
     }, ctx);
 };
