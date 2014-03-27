@@ -1,6 +1,6 @@
 {
   "name": "map-require",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Require a directory of modules and apply a function on module.exports",
   "main": "index.js",
   "scripts": {

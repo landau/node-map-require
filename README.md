@@ -5,6 +5,10 @@ map-require
 
 Require a directory of modules and apply a function on module.exports
 
+```js
+function mapRequire(dir, fn, ctx) { }
+```
+
 ## Install
 
 `npm i -S map-require`
@@ -16,7 +20,7 @@ var path = require('path');
 var is = require('is-predicate');
 var assert = require('assert');
 
-var mapRequire = require('./');
+var mapRequire = require('map-require');
 var FIXTURES = path.join(__dirname, 'fixtures');
 
 var arr = mapRequire(FIXTURES, property('name'));
