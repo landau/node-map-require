@@ -10,11 +10,12 @@ var path = require('path');
  * @param {string} dir
  * @param {function} fn
  * @param {Object} [ctx]
+ * @param {RegExp} [rgx]
  *
  * @return {Array}
  */
-module.exports = function mapRequire(dir, fn, ctx) {
-  var rgx = /\.js$/;
+module.exports = function mapRequire(dir, fn, ctx, rgx) {
+  rgx = rgx || /\.js$/;
 
   return fs.readdirSync(dir)
     .filter(rgx.test, rgx)

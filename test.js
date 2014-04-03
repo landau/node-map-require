@@ -40,4 +40,11 @@ describe('#mapRequire', function() {
     var arr = mapRequire(FIXTURES, o.fn, o);
     assert(arr.indexOf('a') > -1);
   });
+
+  it('should use a custom rgx', function() {
+    var arr = mapRequire(FIXTURES, property('name'), null, /[^pikachu].js$/);
+    assert.equal(arr.length, 1);
+    assert(arr.indexOf('Charmander') > -1);
+    assert.equal(arr.indexOf('Pikachu'), -1);
+  });
 });
